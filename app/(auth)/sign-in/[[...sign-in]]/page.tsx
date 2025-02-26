@@ -46,14 +46,14 @@ export default function SignInPage() {
   return (
     <div className="grid min-h-svh lg:grid-cols-2 h-screen overflow-hidden">
       <div className="flex flex-col gap-4 p-6 md:p-10">
-        {/* <div className="flex justify-center gap-2 md:justify-start">
+        <div className="flex justify-center gap-2 md:justify-start">
           <a href="#" className="flex items-center gap-2 font-medium font-spaceGrotesk">
             <div className="flex h-6 w-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
               <GalleryVerticalEnd className="size-4" />
             </div>
             ClipGen AI
           </a>
-        </div>*/}
+        </div>
         <div className="flex flex-1 items-center justify-center">
           <div className="w-full max-w-xs space-y-8 font-spaceGrotesk">
             <div id="clerk-captcha" />
@@ -80,7 +80,7 @@ export default function SignInPage() {
                 <Clerk.GlobalError className="text-sm text-red-500 text-center" />
 
                 {/* Email Field */}
-                {/*<div className="space-y-2">
+                <div className="space-y-2">
                   <Clerk.Field name="identifier">
                     <Clerk.Label className="block text-sm font-medium text-gray-700 mb-2">
                       Email address
@@ -109,7 +109,7 @@ export default function SignInPage() {
                   <div className="relative flex justify-center text-sm">
                     <span className="bg-white px-2 text-gray-500">Or</span>
                   </div>
-                </div>*/}
+                </div>
 
                 {/* OAuth Buttons */}
                 <div className="space-y-3">
