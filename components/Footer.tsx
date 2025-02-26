@@ -35,7 +35,7 @@ const Footer = () => {
             YouTube Content Creator, powered by AI.
           </p>
 
-          <Button
+          {/*<Button
             variant="outline"
             className="w-fit"
             asChild
@@ -45,7 +45,7 @@ const Footer = () => {
             Built with LaunchPro 🚀
             </Link>
             </Button>
-          </Button>
+          </Button>*/}
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 w-full max-w-[50rem]">
