@@ -45,12 +45,7 @@ const faqs = [
   {
     question: "Are there any discounts for new users?",
     answer:
-      "Yes! We are currently offering 30% off your first 3 months. This deal is limited to the first 20 customers, so act fast!",
-  },
-  {
-    question: "What makes LaunchPro the best tool for SaaS developers?",
-    answer:
-      "LaunchPro offers a premium dashboard, comprehensive financial reporting, developer tools like source code embeds, and marketing automation—all designed to help you grow your SaaS effortlessly.",
+      "Yes! We are currently offering 30% off your first 3 months. This deal is limited to the first 50 customers, so act fast!",
   },
 ];
 
