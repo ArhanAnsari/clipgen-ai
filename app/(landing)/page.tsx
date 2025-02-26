@@ -69,7 +69,7 @@ const pricingPlans = [
   },
   {
     name: "Starter",
-    price: "$9",
+    price: "₹799",
     description: "Best for content creators just starting out",
     features: [
       "50 AI generations per month",
@@ -85,7 +85,7 @@ const pricingPlans = [
   },
   {
     name: "Creator",
-    price: "$15",
+    price: "₹1299",
     description: "For professional content creators",
     features: [
       "Unlimited AI generations",
