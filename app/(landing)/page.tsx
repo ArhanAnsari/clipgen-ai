@@ -234,7 +234,7 @@ export default function Page() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-rose-500"></span>
               </span>
-              Claude Sonnet-3.5 Integration
+              Gemini 2.0 Flash Integration
             </span>
           </motion.div>
 
