@@ -14,10 +14,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 export default function Navbar() {
   const pathname = usePathname();
-  const [hoveredLink, setHoveredLink] = useState(null);
+  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
 
   const links = [
     { name: "Product", hash: "#product" },
@@ -89,12 +90,31 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Sign Up Button - Always visible */}
+        {/* Sign Up Button - Always visible when user is not signed in*/}
+        <SignedOut>
         <Button asChild>
           <Link href="/sign-up">
             Sign Up
           </Link>
         </Button>
+        </SignedOut>
+
+        <div className="flex items-center gap-4">
+        <SignedIn>
+            <Link href="manage-plan">
+            <Button>
+              Manage Plan
+            </Button>
+            </Link>
+
+            <Link href="/dashboard">
+              Dashboard
+            </Link>
+          <div>
+            <UserButton />
+          </div>
+        </SignedIn>
+        </div>
       </nav>
     </header>
   );

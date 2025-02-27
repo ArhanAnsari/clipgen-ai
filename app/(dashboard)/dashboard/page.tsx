@@ -9,6 +9,7 @@ import Link from "next/link";
 import clsx from "clsx";
 import cx from "classnames";
 import classNames from "classnames";
+import { Input } from "@/components/ui/input";
 
 export default function ChatInput() {
   return (
@@ -32,7 +33,7 @@ export default function ChatInput() {
               {/* <p className="text-sm text-gray-500 mt-1">
                 Usage: <span className="font-bold">2/2 Chats</span>
               </p> */}
-              <Link href="/settings/plan" className="">View Usage</Link>
+              <Link href="/manage-plan" className="">View Usage</Link>
             </div>
           </div>
           {/* <Button
@@ -50,15 +51,12 @@ export default function ChatInput() {
         <div className="max-w-3xl mx-auto relative">
           <div className="absolute inset-x-0 -top-24 h-24 bg-gradient-to-t from-dark to-transparent" />
           <div className="relative w-full bg-white rounded-md border shadow-sm mb-6 font-dmSans">
-            <Textarea
-              placeholder="Send a message..."
-              className={cx(
-                'min-h-[24px] max-h-[calc(75dvh)] overflow-hidden resize-none rounded-2xl !text-base bg-muted pb-10 dark:border-zinc-700',
-                classNames,
-              )}
-              // className="min-h-[80px] w-full resize-none rounded-md py-4 px-4 pr-24 text-base  focus-visible:ring-gray-200 focus-visible:ring-offset-0 dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700"
-            />
-            <div className="absolute bottom-3 right-3 flex items-center gap-2">
+            <Input
+              type="url"
+              placeholder="Enter YouTube URL..."
+              className="w-full sm:w-500 bg-white border-gray-200 text-gray-900 placeholder:text-gray-400 rounded-full"
+             />
+            {/* <div className="absolute bottom-3 right-3 flex items-center gap-2">
               <Button
                 size="icon"
                 variant="ghost"
@@ -72,7 +70,15 @@ export default function ChatInput() {
               >
                 <Send className="h-5 w-5" />
               </Button>
-            </div>
+            </div> */}
+            <div className="absolute bottom-3 right-3 flex items-center gap-2">
+              <Button
+                size="icon"
+                className="h-9 w-9 hover:bg-gray-100 rounded-full"
+              >
+                <Send className="h-1 w-2 text-gray-500" />
+              </Button>
+          </div>
           </div>
         </div>
       </div>

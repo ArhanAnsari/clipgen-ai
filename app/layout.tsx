@@ -1,8 +1,8 @@
 import { DM_Sans, Space_Grotesk } from "next/font/google";
 import "./globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider"
+import ClientWrapper from "@/components/ClientWrapped";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -40,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
+    <ClientWrapper>
       <html lang="en">
       <head>
       <script
@@ -62,6 +62,6 @@ export default function RootLayout({
           <Toaster />
         </body>
       </html>
-    </ClerkProvider>
+      </ClientWrapper>
   );
 }
