@@ -11,6 +11,7 @@ import FaqItem from "@/components/FaqItem";
 import CTA from "@/components/Cta";
 import Link from "next/link";
 import { PricingCard } from "@/components/PricingCard";
+import YoutubeVideoForm from "@/components/YoutubeVideoForm";
 
 const faqs = [
   {
@@ -275,7 +276,7 @@ export default function Page() {
             transition={{ delay: 0.8 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md mx-auto"
           >
-            <Input
+            {/*<Input
               type="url"
               placeholder="Enter YouTube URL..."
               className="w-full sm:w-72 bg-white border-gray-200 text-gray-900 placeholder:text-gray-400 rounded-full"
@@ -288,7 +289,8 @@ export default function Page() {
                 <WandSparkles />
                 Start creating
               </Link>
-            </Button>
+            </Button>*/}
+            <YoutubeVideoForm />
           </motion.div>
         </motion.div>
       </div>
