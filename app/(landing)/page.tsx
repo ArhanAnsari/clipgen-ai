@@ -306,8 +306,8 @@ export default function Page() {
           className="relative rounded-xl overflow-hidden shadow-2xl"
         >
           <Image
-            src="/hero.webp"
-            alt="AI Platform Dashboard"
+            src="/hero.png"
+            alt="Clipgen AI Dashboard "
             width={1920}
             height={1080}
             className="rounded-xl object-cover"
