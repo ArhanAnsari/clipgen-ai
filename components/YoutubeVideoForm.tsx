@@ -1,6 +1,6 @@
 import Form from "next/form";
 import AnalyseButton from "./AnalyseButton";
-import { analyseYoutubeVideo } from "@/action/analyseYoutubeVideo";
+import { analyseYoutubeVideo } from "@/actions/analyseYoutubeVideo";
 function YoutubeVideoForm() {
   return (
     <div className="w-full max-w-2xl mx-auto">
