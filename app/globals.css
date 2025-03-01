@@ -1,6 +1,11 @@
+@import "tailwindcss";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@plugin "tailwindcss-animate";
+@plugin "@tailwindcss/typography";
 
 
 @layer base {

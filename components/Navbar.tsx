@@ -106,10 +106,6 @@ export default function Navbar() {
               Manage Plan
             </Button>
             </Link>
-
-            <Link href="/dashboard">
-              Dashboard
-            </Link>
           <div>
             <UserButton />
           </div>

@@ -6,7 +6,7 @@ import { FeatureFlag } from "@/features/flags";
 import Image from "next/image";
 import { useSchematicEntitlement } from "@schematichq/schematic-react";
 import { useQuery } from "convex/react";
-import { api } from "../../convex/_generated/api";
+import { api } from "./../convex/_generated/api";
 
 interface Thumbnail {
   _id: string;
