@@ -21,9 +21,9 @@ export default function Navbar() {
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
 
   const links = [
-    { name: "Product", hash: "#product" },
-    { name: "Pricing", hash: "#pricing" },
-    { name: "FAQ", hash: "#faq" },
+    { name: "Product", hash: "/#product" },
+    { name: "Pricing", hash: "/#pricing" },
+    { name: "FAQ", hash: "/#faq" },
   ];
 
   const isLinkActive = (hash: string) => {
@@ -101,7 +101,7 @@ export default function Navbar() {
 
         <div className="flex items-center gap-4">
         <SignedIn>
-            <Link href="manage-plan">
+            <Link href="/manage-plan">
             <Button>
               Manage Plan
             </Button>
