@@ -10,7 +10,7 @@ const ManagePlan = () => {
       <p className="text-gray-600 mb-8">
         Manage your subscriptions & billing details here.
       </p>
-      <SchematicComponent componentId="cmpn_RRPvTY9FaA6" />
+      <SchematicComponent componentId="cmpn_7XUFgo1siCL" />
     </div>
   );
 }
