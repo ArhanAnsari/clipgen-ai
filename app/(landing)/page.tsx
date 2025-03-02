@@ -36,7 +36,7 @@ const faqs = [
   {
     question: "How does billing work?",
     answer:
-      "LaunchPro offers monthly billing. Payments are processed securely via our trusted payment partners.",
+      "Schematic offers monthly and yearly billing. Payments are processed securely via our trusted payment partners.",
   },
   {
     question: "How do I change my account email?",
