@@ -428,7 +428,7 @@ export default function Page() {
 
       <hr className="border-gray-100 mb-8 sm:mb-16" />
 
-      <div>
+      <div className="z-50">
         <motion.div
           className="max-w-7xl mx-auto px-6 lg:px-8"
           id="faq"
