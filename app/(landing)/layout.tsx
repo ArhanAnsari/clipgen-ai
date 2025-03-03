@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Banner from "@/components/Banner";
-import Navbar from "@/components/Navbar";
+//import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
@@ -15,7 +15,7 @@ export default function PublicLayout({
   return (
     <>
       <Banner />
-      <Navbar />
+      {/*<Navbar />*/}
       <main>{children}</main>
       <Footer />
     </>
