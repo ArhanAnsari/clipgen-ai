@@ -3,6 +3,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider"
 import ClientWrapper from "@/components/ClientWrapped";
+import Navbar from "@/components/Navbar";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -40,8 +41,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClientWrapper>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
       <head>
       <script
           dangerouslySetInnerHTML={{
@@ -56,12 +56,14 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <ClientWrapper>
+              <Navbar />
+              {children}
+            </ClientWrapper>
           </ThemeProvider>
           {/* {children} */}
           <Toaster />
         </body>
       </html>
-      </ClientWrapper>
   );
 }
