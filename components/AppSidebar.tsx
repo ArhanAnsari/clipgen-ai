@@ -75,7 +75,7 @@ const SearchHistory = ({
         >
           <a
             className="text-red-700 dark:text-red-300"
-            href={`http://localhost:3000/video/${videoId}/analysis`}
+            href={`https://arhans-clipgen-ai.vercel.app/video/${videoId}/analysis`}
             suppressHydrationWarning
           >
             <span className="line-clamp-2" suppressHydrationWarning>
