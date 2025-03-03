@@ -15,6 +15,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import ModeToggle from "@/components/ModeToggle";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -89,6 +90,9 @@ export default function Navbar() {
             </div>
           ))}
         </div>
+
+        {/* Dark Mode toggle button */}
+        <ModeToggle />
 
         {/* Sign Up Button - Always visible when user is not signed in*/}
         <SignedOut>
