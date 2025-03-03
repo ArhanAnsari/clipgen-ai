@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
+const nextConfig: NextConfig = {  
+  /* config options here */
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -10,13 +11,17 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'i.ytimg.com',
+        hostname: "i.ytimg.com",
+        protocol: "https",
       },
       {
-        protocol: 'https',
-        hostname: 'yt3.ggpht.com',
-      }
+        hostname: "yt3.ggpht.com",
+        protocol: "https",
+      },
+      {
+        hostname: "tangible-goose-758.convex.cloud",
+        protocol: "https",
+      },
     ],
   },
 };
