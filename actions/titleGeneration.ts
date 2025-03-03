@@ -1,6 +1,6 @@
 "use server";
 import { currentUser } from "@clerk/nextjs/server";
-import { api } from "../../convex/_generated/api";
+import { api } from "./../convex/_generated/api";
 import { client } from "@/lib/schematic";
 import { FeatureFlag, featureFlagEvents } from "@/features/flags";
 import { getConvexClient } from "@/lib/convex";
