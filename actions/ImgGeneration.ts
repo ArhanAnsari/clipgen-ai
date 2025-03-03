@@ -2,81 +2,88 @@
 
 import { getConvexClient } from "@/lib/convex";
 import { currentUser } from "@clerk/nextjs/server";
-import { togetherai, createTogetherAI } from '@ai-sdk/togetherai'; // using this for free image generation
-import { experimental_generateImage as generateImage } from 'ai';
+import { api } from "./../convex/_generated/api";
+import { client } from "@/lib/schematic";
 import { FeatureFlag, featureFlagEvents } from "@/features/flags";
-import Together from 'together-ai';
-import { api } from "@/convex/_generated/api";
+// import OpenAI from "openai";
+import { createTogetherAI, togetherai } from "@ai-sdk/togetherai";
+import { experimental_generateImage } from "ai";
 
 const IMG_SIZE = "1792x1024" as const;
 
 const convexClient = getConvexClient();
 
-export const ImgGeneration= async (prompt:string,videoId:string) => {
+// const openai = new OpenAI({
+//   apiKey: process.env.OPENAI_API_KEY,
+// });
 
+const together = createTogetherAI({
+  apiKey: process.env.TOGETHER_API_KEY,
+});
+
+export async function ImgGeneration(prompt: string, videoId: string) {
   const user = await currentUser();
-  const together = new Together();
-  
+
   if (!user?.id) {
     throw new Error("User not found!");
   }
-  
-  // const togetherai = createTogetherAI({
-    //   apiKey: process.env.TOGETHER_API_KEY,
-    // });
-    
-    if(!prompt) {
-      throw new Error("Failed to generate image prompt");
-    }
-    
-    console.log("Generating image for prompt: ", prompt);
-    
-    //Generate the image using Together AI
-    const imageResponse = await generateImage({
-    model: togetherai.image("black-forest-labs/FLUX.1-schnell-Free"),
+
+  const postUrl = await convexClient.mutation(api.images.generateuploadUrl);
+  console.log("the upload url", postUrl);
+
+  //   const imageResponse = await openai.images.generate({
+  //     model:"dall-e-3",
+  //     prompt:prompt,
+  //     n:1,
+  //     quality:"standard",
+  //     style:"vivid"
+  //   })
+
+  //Generate the image using Together AI
+  const imageResponse = await experimental_generateImage({
+    model: together.image("black-forest-labs/FLUX.1-schnell-Free"),
     prompt: prompt,
     size: IMG_SIZE,
     n: 1,
   });
 
-  const imageUrl  = imageResponse.responses[0];
+  console.log("Image Response : ", imageResponse);
 
-  if(!imageUrl) {
-    throw new Error("Failed to generate image");
-  }
+  if (!imageResponse?.image?.base64)
+    throw new Error("Failed to generate image.");
 
-  console.log("Getting upload URL........");
-  const postUrl = await convexClient.mutation(api.images.generateUploadUrl);
-  console.log("Got upload URL");
+  const imgUrl = `data:image/png;base64,${imageResponse.image.base64}`;
 
-  console.log("Downloadubg Image from Together AI........");
-  const image: Blob = await fetch(imageUrl).then((res) => res.blob());
-  console.log("Downloaded Image from Together AI");
+  // download the image
+  const image: Blob = await fetch(imgUrl).then((res) => res.blob());
+  console.log("Downloaded image successfully!", image);
 
-  console.log("Uploading Image to Convex........");
+  // upload the image in convex
   const result = await fetch(postUrl, {
     method: "POST",
-    headers: { "Content-Type": image!.type },
+    headers: {
+      "Content-Type": image!.type,
+    },
     body: image,
   });
 
   const { storageId } = await result.json();
-  console.log("Uploaded Image to storage with ID: ", storageId);
+  console.log("Uploaded image to storage id : ", storageId);
 
-  console.log("Storing Image in Convex........");
-  await convexClient.mutation(api.images.storeImage, {
-    storageId,
+  //save the image into db
+  await convexClient.mutation(api.images.storeImg, {
+    storageId: storageId,
     videoId,
     userId: user.id,
   });
-  // console.log("Stored Image in Convex with ID: ", imageId);
-  console.log("Saved Image reference in database")
 
-  const dbImageUrl = await convexClient.query(api.images.getImage, {
-    userId: user.id,
+  //get image url
+  const dbImgUrl = await convexClient.query(api.images.getImage, {
     videoId,
+    userId: user.id,
   });
 
+  //Track the image generation event
   await client.track({
     event: featureFlagEvents[FeatureFlag.IMG_GENERATION].event,
     company: {
@@ -87,7 +94,7 @@ export const ImgGeneration= async (prompt:string,videoId:string) => {
     },
   });
 
-  return (
-    imageUrl: dbImageUrl,
-  )
+  return {
+    imageUrl: dbImgUrl,
+  };
 }
