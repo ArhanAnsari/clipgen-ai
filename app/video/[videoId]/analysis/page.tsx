@@ -11,6 +11,7 @@ import { useLayoutEffect, useState } from "react";
 import { Doc } from "./../../../../convex/_generated/dataModel";
 import { useUser } from "@clerk/nextjs";
 import { createOrGetVideo } from "@/actions/createOrGetVideo";
+import Navbar from "@/components/Navbar";
 
 const AnalysisPage = () => {
   const params = useParams<{ videoId: string }>();
@@ -64,6 +65,7 @@ const AnalysisPage = () => {
 
   return (
     <div className="xl:container bg-white dark:bg-gray-800 mx-auto px-4 md:px-0">
+      <Navbar />
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Left side */}
 
