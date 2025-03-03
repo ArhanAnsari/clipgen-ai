@@ -8,7 +8,7 @@ import { FeatureFlag, featureFlagEvents } from "@/features/flags";
 import Together from 'together-ai';
 import { api } from "@/convex/_generated/api";
 
-const IMG_SIZE = "1024x1024" as const;
+const IMG_SIZE = "1792x1024" as const;
 
 const convexClient = getConvexClient();
 
