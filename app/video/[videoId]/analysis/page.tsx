@@ -7,45 +7,45 @@ import Usage from "@/components/Usage";
 import YoutubeVideoDetails from "@/components/youtubeVideoDetails";
 import { FeatureFlag } from "@/features/flags";
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { Doc } from "./../../../../convex/_generated/dataModel";
 import { useUser } from "@clerk/nextjs";
 import { createOrGetVideo } from "@/actions/createOrGetVideo";
-import Navbar from "@/components/Navbar";
 
 const AnalysisPage = () => {
   const params = useParams<{ videoId: string }>();
   const { videoId } = params;
-  const [video, setVideo] = useState<Doc<"videos"> | null | undefined>(undefined);
+  const [video, setVideo] = useState<Doc<"videos"> | null | undefined>(
+    undefined
+  );
   const { user } = useUser();
- 
 
-  useEffect(()=>{
-      if(!user?.id) return;
-      const fetchVideo = async()=>{
-         const response = await createOrGetVideo(videoId as string,user.id);
-         if(!response.success)
-         {
-          console.log("error creating or getting video",response.error);
-         }else{
-          setVideo(response.data);
-         }
+  useLayoutEffect(() => {
+    if (!user?.id) return;
+    const fetchVideo = async () => {
+      const response = await createOrGetVideo(videoId as string, user.id);
+      if (!response.success) {
+        console.log("error creating or getting video", response.error);
+      } else {
+        setVideo(response.data);
       }
+    };
 
-      fetchVideo();
-  },[videoId,user])
-
+    fetchVideo();
+  }, [videoId, user]);
 
   const videoTranscriptionStatus =
     video === undefined ? (
-      <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-50 border border-gray-200 rounded-full">
+      <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-full">
         <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" />
-        <span className="text-sm text-gray-700">Loading...</span>
+        <span className="text-sm text-gray-700 dark:text-gray-400">
+          Loading...
+        </span>
       </div>
     ) : !video ? (
-      <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-50 border border-gray-200 rounded-full">
+      <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-full">
         <div className="w-2 h-2 bg-amber-400 rounded-full animate-pulse" />
-        <p className="text-sm text-amber-700">
+        <p className="text-sm text-amber-700 dark:text-amber-400">
           This is your first time analysing this video <br />
           <span className="font-semibold">
             (1 analysis token is being used!)
@@ -53,19 +53,17 @@ const AnalysisPage = () => {
         </p>
       </div>
     ) : (
-      <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-50 border border-gray-200 rounded-full">
+      <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-full">
         <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-        <p className="text-sm text-green-700">
-          Analysis exists for this video - no additional tokens needed in future calls! <br/>
+        <p className="text-sm text-green-700 dark:text-green-400">
+          Analysis exists for this video - no additional tokens needed in future
+          calls! <br />
         </p>
       </div>
     );
 
-
-
   return (
     <div className="xl:container bg-white dark:bg-gray-800 mx-auto px-4 md:px-0">
-      <Navbar />
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Left side */}
 
