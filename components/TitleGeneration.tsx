@@ -5,7 +5,7 @@ import Usage from "./Usage";
 import { useSchematicEntitlement } from "@schematichq/schematic-react";
 import { Copy } from "lucide-react";
 import { useQuery } from "convex/react";
-import { api } from "../../convex/_generated/api";
+import { api } from "./../convex/_generated/api";
 
 interface Title {
   _id: string;
