@@ -225,7 +225,7 @@ export function AppSidebar() {
             <SidebarMenuButton className="w-fit h-fit px-4" asChild>
               <a
                 className="text-gray-700 flex justify-start items-center dark:text-gray-50"
-                href={"/manage_plan"}
+                href={"/manage-plan"}
               >
                 <LucidePackage />
                 <span className="flex flex-col justify-start items-start">
