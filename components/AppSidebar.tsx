@@ -24,6 +24,7 @@ import { Id } from "./../convex/_generated/dataModel";
 import { VideoDetails } from "@/types/types";
 import { getVideoDetails } from "@/actions/getVideoDetails";
 import { useParams } from "next/navigation";
+import { AppLogo } from "@/components/Sidebar/app-logo";
 
 interface Video {
   _id: Id<"videos">;
@@ -182,6 +183,7 @@ export function AppSidebar() {
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
+              <AppLogo />
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <a className="text-gray-700 dark:text-gray-50" href={"/"}>
